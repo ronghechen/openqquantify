@@ -1,0 +1,426 @@
+.background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/background.jpg);
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+h1 {
+    font-size: 60px;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    color: white;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+main.content {
+    padding: 4rem;
+}
+
+.scrollable-text {
+    margin-top: 40vh;
+    max-width: 800px;
+    animation: fadeInUp 2s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;   
+    z-index: 1000;
+    background: rgba(0,0,0,.25);
+    backdrop-filter: blur(6px);
+  }
+  
+  .nav-inner {
+    max-width: none;      
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box; 
+
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;   
+  }
+  
+  .brand { color:#fff; font-weight:400; font-size:20px; text-decoration:none; }
+  .brand:hover { opacity: .75; } 
+  .links { list-style:none; display:flex; gap:28px; margin:0; padding:0; }
+  .links a { color:#fff; 
+    font-weight:400; 
+    text-decoration:none; 
+    }
+
+.links a:hover {
+    opacity: .7;                     /* “shift opacity down” */
+}
+  
+  main.content { padding: 96px 4rem 4rem; }
+  
+/* layout */
+.two-col {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(24px, 6vw, 64px);
+    min-height: 60vh;
+  }
+  
+  /* left side */
+  .left { 
+    flex: 1 1 52ch;                 /* prefers up to ~52 characters wide */
+    max-width: 720px;
+  }
+  .left h1 { 
+    font-size: clamp(32px, 5vw, 56px);
+    line-height: 1.1;
+    margin: 0 0 40px;
+  }
+  .left p { 
+    margin: 0 0 28px;
+    max-width: 60ch;
+  }
+  
+  /* buttons */
+  .cta-row { 
+    display: flex; 
+    gap: 16px; 
+    flex-wrap: wrap; 
+    margin-top: 6vh;
+}
+  .btn { 
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(10px);         
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 40px;
+    padding: 15px 30px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: background 0.3s ease; 
+  }
+  .btn:hover { 
+    background: rgba(0, 123, 255, 0.2);
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.8);
+    color: rgba(255, 255, 255, 0.8);
+}
+  .btn:active { transform: translateY(1px); }
+  
+  .hero-art { 
+    flex: 0 1 820px;
+    display: flex; justify-content: center; align-items: center;
+  }
+  .hero-art img {
+    width: 100%; height: auto; 
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,.45));
+    pointer-events: none;            /* purely decorative */
+    transition: transform 0.35s ease, filter 0.35s ease;
+  }
+
+  .hero-art:hover img {
+    transform: scale(1.08);
+    filter:
+    drop-shadow(0 0 25px rgba(0, 123, 255, 0.85))
+    drop-shadow(0 8px 24px rgba(0,0,0,.45)); /* keep original shadow too */
+} 
+
+.pain-points {
+    padding: 5rem 8vw 6rem;
+    text-align: center;
+}
+
+  .pain-grid {
+    display: flex;
+    justify-content: center;
+    gap: 8rem;
+    flex-wrap: wrap;
+}
+  
+  .pain-card {
+    max-width: 300px;
+}
+  
+  .pain-icon {
+    margin-bottom: 1.5rem;
+}
+
+.pain-icon img {
+    width: 300px;
+    height: auto;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,.45));
+    transition: transform 0.35s ease, filter 0.35s ease;
+    transform-origin: center;
+}
+
+.pain-card h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+  }
+  
+  .pain-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+
+  .pain-card:hover .pain-icon img {
+    transform: scale(1.08);
+    filter:
+      drop-shadow(0 0 25px rgba(0, 123, 255, 0.8))
+      drop-shadow(0 8px 24px rgba(0,0,0,.45));
+  }
+
+  .hiw-right { 
+    flex: 0 1 820px;
+    display: flex; 
+    text-align: center; 
+    align-items: center;
+    flex-direction: column;
+  }
+
+  /* flag grid on the right side of "How It Works" */
+.four-img-grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 2.5rem 1rem;
+  justify-items: center;
+}
+
+.card {
+  text-align: center;
+}
+
+.flag img {
+  width: 240px;
+  height: auto;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,.45));
+  transition: transform 0.35s ease, filter 0.35s ease;
+  transform-origin: center;
+}
+
+.card h2 {
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+/* same glow + scale hover as your other emojis */
+.card:hover .flag img {
+  transform: scale(1.08);
+  filter:
+    drop-shadow(0 0 25px rgba(0, 123, 255, 0.8))
+    drop-shadow(0 8px 24px rgba(0,0,0,.45));
+}
+
+/* --- Try the Agent section --- */
+
+.try {
+  align-items: flex-start;
+  padding-top: 160px;
+  padding-bottom: 96px;
+}
+
+.try .left h6 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.stacked-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 16px 0 24px;
+}
+
+.stacked-btns .btn {
+  width: 100%;
+  text-align: center;
+}
+
+.privacy-note {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+/* right side chat UI */
+
+.chat-interface {
+  flex: 1 1 480px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.chat-panel {
+  width: 100%;
+  max-width: 520px;
+  min-height: 560px;
+  padding: 24px 24px 20px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.05));
+  box-shadow: 0 0 35px rgba(0,0,0,0.6);
+  backdrop-filter: blur(18px);
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-input {
+  flex: 1;
+  min-height: 260px;
+  border-radius: 16px;
+  border: none;
+  padding: 16px 18px;
+  font-family: inherit;
+  font-size: 15px;
+  resize: vertical;
+  background: transparent;
+  color: #fff;
+  outline: none;
+}
+
+.chat-input::placeholder {
+  color: rgba(255,255,255,0.5);
+}
+
+.chat-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.chat-submit {
+  min-width: 120px;
+}
+
+/* answer box */
+
+.chat-answer {
+  margin-top: 20px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(0,0,0,0.4);
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.chat-answer h6 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.chat-answer-body {
+  font-size: 15px;
+  line-height: 1.5;
+  white-space: pre-wrap; /* keep line breaks from the model */
+}
+
+.data-privacy {
+  padding: 5rem 8vw 6rem;
+  text-align: center;
+}
+
+.call-to-action {
+  padding: 5rem 8vw 6rem;
+  text-align: center;
+}
+
+.call-to-action p {
+  margin-bottom: 5rem;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1 0 auto;
+}
+
+.site-footer {
+  flex-shrink: 0;
+  padding: 16px 8vw;
+  font-size: 14px;
+  color: #ffffff;
+  background: transparent;             
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.site-footer a {
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.site-footer a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.footer-left .divider {
+  margin: 0 8px;
+  opacity: 0.6;
+}
+
+.save-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 12px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.save-row input {
+  transform: scale(1.05);
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Landing Page</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="background"></div>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a class="brand" href="#home">OpenQQuantify</a>
+      <ul class="links">
+        <li><a href="#howitworks">How It Works</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#regulations">Regulations</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main class="content">
+    <section class="hero two-col">
+      <div class="left">
+        <h1>Navigate Global Medical Regulations with Confidence.</h1>
+        <p>Our AI compliance agent simplifies complex US, European, UK, and Canadian regulations, giving you instant answers and peace of mind.</p>
+        <div class="cta-row">
+          <a class="btn" href="#agent">Try the AI Agent</a>
+          <a class="btn" href="https://www.themedicaltechnology.com" target="_blank">Book a Meeting</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img src="{{ url_for('static', filename='images/globe.png') }}" alt="Network globe" />
+      </div>
+    </section>
+    <section class="pain-points" id="pain-points">
+      <h1>Staying Compliant is Hard. The Stakes Are High.</h1>
+      <div class="pain-grid">
+        <article class="pain-card">
+          <div class="pain-icon">
+            <img src="{{ url_for('static', filename='images/clock_emoji.png') }}"/>
+          </div>
+          <h3>Time Consuming</h3>
+          <p>Hours spent sifting through dense legal documents.</p>
+        </article>
+        <article class="pain-card">
+          <div class="pain-icon">
+            <img src="{{ url_for('static', filename='images/earth_emoji.png') }}"/>
+          </div>
+          <h3>Globally Complex</h3>
+          <p>Different rules for the USA, EU, UK, and Canada.</p>
+        </article>
+        <article class="pain-card">
+          <div class="pain-icon">
+            <img src="{{ url_for('static', filename='images/warning_emoji.png') }}"/>
+          </div>
+          <h3>Costly Mistakes</h3>
+          <p>Non-compliance leads to heavy fines and reputational damage.</p>
+        </article>
+      </div>
+    </section>
+    <section class="how-it-works two-col">
+      <div class="left">
+        <h1>How It Works</h1>
+        <h2>1. Ask Your Question</h2>
+        <p>Type your compliance question in plain English.</p>
+        <h2>2. AI Analyzes Regulations</h2>
+        <p>Our agent scans millions of data points from medical regulations, research papers, and license data.</p>
+        <h2>3. Get a Clear, Cited Answer</h2>
+        <p>Receive a concise summary with references to the relevant regulations.</p>
+      </div>
+      <div class="hiw-right">
+        <h1>Regulations Covered</h1>
+        <div class="four-img-grid">
+          <article class="card">
+            <div class="flag">
+              <img src="{{ url_for('static', filename='images/usa_flag.png') }}">
+            </div>
+            <h2>USA</h2>
+          </article>
+          <article class="card">
+            <div class="flag">
+              <img src="{{ url_for('static', filename='images/canada_flag.png') }}">
+            </div>
+            <h2>Canada</h2>
+          </article>
+          <article class="card">
+            <div class="flag">
+              <img src="{{ url_for('static', filename='images/europe_flag.png') }}">
+            </div>
+            <h2>Europe</h2>
+          </article>
+          <article class="card">
+            <div class="flag">
+              <img src="{{ url_for('static', filename='images/uk_flag.png') }}">
+            </div>
+            <h2>UK</h2>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="try two-col" id="agent">
+      <div class="left">
+        <h1>Ask our AI Agent Anything.</h1>
+        <h6>See for yourself how it works.</h6>
+        <p>Get instant, plain-English answers to your compliance questions. (Example: "What are the key GDPR requirements for a medical device in Germany?" or "Informed consent requirements in Canada?")</p>
+        <h6>Try these Examples:</h6>
+        <div class="stacked-btns">
+          <a class="btn" type="button" data-question="HIPAA compliance for patient data storage">HIPAA compliance for patient data storage</a>
+          <a class="btn" type="button" data-question="UK MDR clinical investigation reporting">UK MDR clinical investigation reporting</a>
+          <a class="btn" type="button" data-question="GPDR Right to be forgotten for medical records">GPDR Right to be forgotten for medical records</a>
+        </div>
+        <p>🔒 <strong>Privacy Note: </strong> This is a demo. Your questions are not stored or used for training.</p>
+      </div>
+      <div class="chat-interface">
+        <div class="chat-panel">
+          <form class="chat-form" action="{{ url_for('ask') }}" method="POST">
+            <textarea id="question-box" name="question" class="chat-input" placeholder="Type your question here...">{{ question or "" }}</textarea>
+            <label class="save-row">
+              <input type="checkbox" name="save" />
+              Save this Q&amp;A (optional)
+            </label>
+            <div class="chat-actions">
+              <button type="submit" class="btn chat-submit">
+                Submit
+              </button>
+            </div>
+          </form>
+          {% if response %}
+          <div class="chat-answer">
+            <h6>AI Agent Answer</h6>
+            <div class="chat-answer-body">
+              {{ response }}
+            </div>
+          </div>
+          <div class="post-response-actions">
+            <a class="history-link" href="/history">
+              View saved Q&amp;A →
+            </a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+    <section class="data-privacy" id="data-privacy">
+      <h1>Your Data is Secure.</h1>
+      <div class="pain-grid">
+        <article class="pain-card">
+          <div class="pain-icon">
+            <img src="{{ url_for('static', filename='images/shield_emoji.png') }}"/>
+          </div>
+          <h3>GDPR & PIPEDA Compliant</h3>
+          <p>We handle your data with the highest standards of privacy.</p>
+        </article>
+        <article class="pain-card">
+          <div class="pain-icon">
+            <img src="{{ url_for('static', filename='images/earth_emoji.png') }}"/>
+          </div>
+          <h3>Our Commitment to Privacy</h3>
+          <p>DWe use industry-leading encryption and never train our models on your confidential queries.</p>
+        </article>
+      </div>
+      <h3><strong>We are a compliance company first.</strong> Our own practices are designed to meet the strictest regulations we help you navigate.</h3>
+    </section>
+    <section class="call-to-action" id="call-to-action">
+      <h1>Ready to Ensure Your Compliance?</h1>
+      <p>Schedule a free meeting with our experts to see how ComplianceAI can work for your business.</p>
+      <a class="btn" href="https://www.themedicaltechnology.com" target="_blank">Book a Meeting Now</a>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-left">
+      <a href="#privacy">Privacy Policy</a>
+      <span class="divider">|</span>
+      <a href="#terms">Terms of Service</a>
+    </div>
+    <div class="footer-right">
+      © 2025 OpenQQuantify. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Saved Q&A</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <div class="background"></div>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a class="brand" href="/">OpenQQuantify</a>
+      <ul class="links">
+        <li><a href="/">Back to Agent</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h1>Saved Q&amp;A</h1>
+
+    {% if rows %}
+      {% for r in rows %}
+        <div class="chat-answer" style="margin-top: 18px;">
+          <h6>{{ r.created_at.strftime("%b %d, %Y • %I:%M %p") }}</h6>
+          <div class="chat-answer-body"><strong>Q:</strong> {{ r.question }}</div>
+          <div class="chat-answer-body" style="margin-top: 10px;"><strong>A:</strong> {{ r.answer }}</div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p style="opacity:0.9; margin-top: 18px;">No saved answers yet. Go back and save one.</p>
+    {% endif %}
+  </main>
+</body>
+</html>
